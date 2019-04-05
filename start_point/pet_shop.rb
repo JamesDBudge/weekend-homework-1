@@ -84,7 +84,7 @@ end
 
 def sell_pet_to_customer(petshop, pet_to_be_sold, customer_name)
   if pet_to_be_sold == nil
-
+    #Turns out if I want it not to do anything I can just put nothing here. This is hacky though and I don't like it. I've done it like this because the != operator didn't seem to work for doing the if statement the opposite way.
   else
     if customer_can_afford_pet(customer_name, pet_to_be_sold) == true
       remove_customer_cash(customer_name, pet_to_be_sold[:price])

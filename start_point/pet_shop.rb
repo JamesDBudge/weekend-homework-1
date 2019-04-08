@@ -83,12 +83,13 @@ def customer_can_afford_pet(customers, new_pet)
 end
 
 def sell_pet_to_customer(petshop, pet_to_be_sold, customer_name)
-  if pet_to_be_sold != nil
+  if pet_to_be_sold != nil #because find_pet_by_name has already run in the test and therefore we know whether the pet exists and its hash was (or wasn't) passed to this variable
     if customer_can_afford_pet(customer_name, pet_to_be_sold) == true
       remove_customer_cash(customer_name, pet_to_be_sold[:price])
       add_or_remove_cash(petshop, pet_to_be_sold[:price])
       add_pet_to_customer(customer_name, pet_to_be_sold)
       increase_pets_sold(petshop, 1)
+      remove_pet_by_name(petshop, pet_to_be_sold) #we need to do this to keep stock current, but it isn't tested for
     end
   end
 end
